@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Vue | Watch</title>
+  </head>
+  <body>
+    <div id="vueApp">
+      <input type="number" v-model="bil1" />
+      <input type="number" v-model="bil2" />
+      <h4>{{ hasil }}</h4>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const sample = {
+        data() {
+          return {
+            bil1: "",
+            bil2: "",
+            hasil: "",
+          };
+        },
+        watch: {
+          bil1() {
+            this.hasil = parseInt(this.bil1) + parseInt(this.bil2);
+          },
+          bil2() {
+            this.hasil = parseInt(this.bil1) + parseInt(this.bil2);
+          },
+        },
+      };
+      Vue.createApp(sample).mount("#vueApp");
+    </script>
+  </body>
+</html>

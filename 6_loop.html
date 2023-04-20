@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Vue | Loop</title>
+  </head>
+  <body>
+    <div id="vueApp">
+      <h3>{{title }}</h3>
+      <ol>
+        <!-- konsepsi for hampir sama dengan foreach pada php, namun ini dibalik  -->
+        <li v-for="subject in subjects">
+          {{ subject.nama }} - {{ subject.alamat }}
+        </li>
+      </ol>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const sample = {
+        data() {
+          return {
+            title: "Judulnya ini",
+            subjects: [
+              { nama: "Ferdy", alamat: "Brazil" },
+              { nama: "Hahan", alamat: "Spanyol" },
+              { nama: "Pradana", alamat: "Norwegia" },
+            ],
+          };
+        },
+      };
+      Vue.createApp(sample).mount("#vueApp");
+    </script>
+  </body>
+</html>

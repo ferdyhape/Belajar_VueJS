@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Vue | Class</title>
+
+    <style>
+      .active {
+        color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vueApp">
+      <h3>{{ title }}</h3>
+
+      <!-- apa aja sih yang ada di class ini, kalau ini kan toogle -->
+      <!-- kalau menggunakan dash(-) di dalam kurawal formatan, maka harus diberikan kutip satu  -->
+      <ol
+        class="info-karyawan"
+        :class="{ active: isActive, 'box-shadow': false }"
+      >
+        <li v-for="subject in subjects">
+          {{ subject.nama }} - {{ subject.alamat }}
+        </li>
+      </ol>
+      <button v-on:click="activate()">Activate</button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const sample = {
+        data() {
+          return {
+            title: "Judulnya ini",
+            subjects: [
+              { nama: "Ferdy", alamat: "Brazil" },
+              { nama: "Hahan", alamat: "Spanyol" },
+              { nama: "Pradana", alamat: "Norwegia" },
+            ],
+            isActive: false,
+          };
+        },
+        methods: {
+          activate() {
+            this.isActive = !this.isActive;
+          },
+        },
+      };
+      Vue.createApp(sample).mount("#vueApp");
+    </script>
+  </body>
+</html>

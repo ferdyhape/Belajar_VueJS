@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Vue | Emit</title>
+  </head>
+  <body>
+    <div id="vueApp">
+      <!-- komponen dengan parameter -->
+      <post
+        title="Hilal Ramadhan 2023"
+        desc="Hilal belum ketemuuuuuu"
+        @trigger-read="read"
+      ></post>
+      <post
+        title="Jadi gii ceritanya"
+        desc="Mending juga turu"
+        @trigger-read="read"
+      ></post>
+
+      <p>Total Selesai: {{ total }}</p>
+    </div>
+
+    <script type="text/x-template" id="post-blog">
+      <h2> {{ title }} </h2>
+      <p>{{ desc }}</p>
+      <button @click="$emit('triggerRead', 10)">Selesai</button>
+    </script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            total: 0,
+          };
+        },
+        methods: {
+          read(num) {
+            this.total = this.total + num;
+          },
+        },
+      });
+
+      app.component("post", {
+        props: ["title", "desc"],
+        template: "#post-blog",
+      });
+
+      app.mount("#vueApp");
+    </script>
+  </body>
+</html>

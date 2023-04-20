@@ -1,0 +1,1 @@
+Membuat program untuk pengecekan input nama! untuk pengecekannya harus langsung render!
